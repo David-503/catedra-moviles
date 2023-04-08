@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "587829461680",
-    "firebase_url": "https://desafiopracticoii-default-rtdb.firebaseio.com",
-    "project_id": "desafiopracticoii",
-    "storage_bucket": "desafiopracticoii.appspot.com"
+    "project_number": "443330130053",
+    "project_id": "proyectocatedra-5576f",
+    "storage_bucket": "proyectocatedra-5576f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:587829461680:android:7567de62a5569dc7c7b175",
+        "mobilesdk_app_id": "1:443330130053:android:2375deec3db2bf504779ec",
         "android_client_info": {
           "package_name": "com.example.tallerpracticoi_dsm"
         }
       },
       "oauth_client": [
         {
-          "client_id": "587829461680-r5a80n9f2iitc5ui623eclhsj9vjk504.apps.googleusercontent.com",
+          "client_id": "443330130053-lad7pqf5r4uqaabkd2skl63tsfg93uj7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCmpK7e06wp6jKiMBJ6ENHDRz3qvCdpi8U"
+          "current_key": "AIzaSyCcFNqfW-bx8TPFHvMqr9JmQ_oAtW1-Jng"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "587829461680-r5a80n9f2iitc5ui623eclhsj9vjk504.apps.googleusercontent.com",
+              "client_id": "443330130053-lad7pqf5r4uqaabkd2skl63tsfg93uj7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
