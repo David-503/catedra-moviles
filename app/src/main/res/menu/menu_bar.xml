@@ -7,9 +7,9 @@
         android:title="@string/home_option" />
 
     <item
-        android:id="@+id/explore"
-        android:icon="@drawable/baseline_monetization_on_24"
-        android:title="Explore" />
+        android:id="@+id/cites"
+        android:icon="@drawable/baseline_edit_calendar_24"
+        android:title="Citas" />
 
     <item
         android:id="@+id/setting"
