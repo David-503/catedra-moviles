@@ -25,4 +25,17 @@
     <string name="create_schedule_title">Appointment</string>
     <string name="create_schedule_subtitle">Schedule new appointment</string>
     <string name="btn_end_schedule">Done</string>
+    <string name="login_name">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="register_question">¿Do you have a account?, Register</string>
+    <string name="login_view_redirect">Login with registered account</string>
+    <string name="register_button">Register</string>
+    <string name="register_indication">Register new account</string>
+    <string name="enter_email">Please enter email...</string>
+    <string name="enter_password">Please enter password!</string>
+    <string name="register_success">Registration successful!</string>
+    <string name="register_fail">Registration failed! Please try again later</string>
+    <string name="logout">Log Out</string>
 </resources>

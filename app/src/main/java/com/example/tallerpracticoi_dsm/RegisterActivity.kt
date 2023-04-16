@@ -3,28 +3,36 @@ package com.example.tallerpracticoi_dsm
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.telephony.TelephonyCallback.CallStateListener
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
+
 class RegisterActivity : AppCompatActivity() {
     private var emailTV: EditText? = null
     private var passwordTV: EditText? = null
     private var regBtn: Button? = null
     private var progressBar: ProgressBar? = null
     private var mAuth: FirebaseAuth? = null
+    private var loginRedirect: TextView? = null
+
+    //Escuchador de FirebaseAuth
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         mAuth = FirebaseAuth.getInstance()
         initializeUI()
         regBtn!!.setOnClickListener { registerNewUser() }
+        loginRedirect!!.setOnClickListener { redirectLoginActivity() }
+        //Verifica si hay una sesión
+        this.checkUser();
     }
+
     private fun registerNewUser() {
         progressBar!!.visibility = View.VISIBLE
         val email: String
@@ -48,8 +56,8 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                     progressBar!!.visibility = View.GONE
-//                    val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -60,15 +68,42 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
     }
+
     private fun initializeUI() {
         emailTV = findViewById(R.id.email)
         passwordTV = findViewById(R.id.password)
         regBtn = findViewById(R.id.register)
         progressBar = findViewById(R.id.progressBar)
+        loginRedirect = findViewById<Button>(R.id.loginRedirect)
+
     }
 
+    private fun redirectLoginActivity() {
 
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+        startActivity(intent)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        mAuth?.addAuthStateListener(authStateListener)
+    }
 
+    override fun onPause() {
+        super.onPause()
+        mAuth?.removeAuthStateListener(authStateListener)
+    }
 
+    private fun checkUser() {
+        // Verificacion del usuario
+        authStateListener = FirebaseAuth.AuthStateListener { auth ->
+            if (auth.currentUser != null) {
+                // Cambiando la vista
+                val intent = Intent(this@RegisterActivity, BottomNavigationActivity::class.java)
+                startActivity(intent)
+                finish()
+
+            }
+        }
+    }
 }
