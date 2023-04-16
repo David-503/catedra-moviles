@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CitesList">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="prueba"
+        android:textSize="20dp"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/cite_create"
+        android:foregroundTint="@color/pink_soft"
+        android:src="@drawable/baseline_add_circle_24"
+        app:borderWidth="0dp"
+        app:elevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameBottomMenu"
+        app:layout_constraintLeft_toLeftOf="@id/middle"
+        app:layout_constraintRight_toRightOf="@id/middle"
+        app:layout_constraintTop_toTopOf="@+id/frameBottomMenu"
+        app:maxImageSize="52dp"
+        app:rippleColor="@color/pink_soft"
+        app:tint="@null" />
+
+    <FrameLayout
+        android:id="@+id/frameBottomMenu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

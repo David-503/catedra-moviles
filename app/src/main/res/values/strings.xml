@@ -10,5 +10,7 @@
     <string name="ingresar">Ingresar</string>
     <string name="correo_electr_nico">Correo Electrónico</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hola fragmento vacio</string>
+    <string name="home_option">Inicio</string>
+    <string name="cite_create">Agendar cita</string>
 </resources>
