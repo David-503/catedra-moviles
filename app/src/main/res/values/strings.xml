@@ -13,4 +13,19 @@
     <string name="hello_blank_fragment">Hola fragmento vacio</string>
     <string name="home_option">Inicio</string>
     <string name="cite_create">Agendar cita</string>
+    <string name="login_name">Inicio de sesión</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="register_question">¿No tienes una cuenta?, Registrate</string>
+    <string name="login_view_redirect">Ingresar con una cuenta registrada</string>
+    <string name="register_button">Registrar</string>
+    <string name="register_indication">Registrar nueva cuenta</string>
+    <string name="enter_email">Por favor ingrese su correo electrónico!</string>
+    <string name="enter_password">Por favor ingrese su contraseña!</string>
+    <string name="register_success">Registrado exitosamente</string>
+    <string name="register_fail">No se pudo registrar!, intente mas tarde</string>
+    <string name="logout">Cerrar sesión</string>
+
+
 </resources>
