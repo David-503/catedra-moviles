@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CitesList">
+    tools:context=".schedules.CitesList">
 
-    <TextView
+    <!--<DatePicker
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -14,7 +15,150 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="prueba"
         android:textSize="20dp"
-        />
+        /> -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="75dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/firstRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_schedule_title"
+                android:textSize="25dp"
+                android:textColor="@color/black_soft"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_schedule_subtitle"
+                android:textSize="15dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/grey"
+                />
+            <TextView
+                android:id="@+id/labelDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:text="@string/label_date"
+                android:visibility="gone"
+                />
+            <EditText
+                android:id="@+id/inputDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="20dp"
+                android:hint="@string/input_date"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secondRowItem1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/middle_child"
+            app:layout_constraintTop_toBottomOf="@id/firstRow"
+            app:layout_constraintBottom_toBottomOf="@id/secondRowItem2"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/labelStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="@string/label_start_time"
+            />
+        <EditText
+            android:id="@+id/iptStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:hint="@string/input_start_time"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secondRowItem2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/middle_child"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/secondRowItem1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/labelEndTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:text="@string/label_end_time"
+                />
+            <EditText
+                android:id="@+id/iptEndTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:hint="@string/input_end_time"
+                android:enabled="false"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/secondRowItem1"
+            android:orientation="vertical"
+            android:layout_marginVertical="20dp"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxStrokeColor="@color/pink_soft"
+                app:hintTextColor="@color/pink_soft"
+                >
+                <AutoCompleteTextView
+                    android:id="@+id/dpdDoctors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/slc_doctor"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_end_schedule"
+                app:backgroundTint="@color/pink_soft"
+                android:backgroundTint="@color/pink_soft"
+                android:foregroundTint="@color/white"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/middle"
         android:layout_width="wrap_content"
