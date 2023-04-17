@@ -38,4 +38,7 @@
     <string name="register_success">Registration successful!</string>
     <string name="register_fail">Registration failed! Please try again later</string>
     <string name="logout">Log Out</string>
+    <string name="complete_form">Fill out the form!</string>
+    <string name="schedule_done">New appointment scheduled!</string>
+    <string name="list_schedule_subtitle">Próximas citas</string>
 </resources>

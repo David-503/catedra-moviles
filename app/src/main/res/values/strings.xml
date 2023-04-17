@@ -25,6 +25,7 @@
     <string name="btn_end_schedule">Finalizar</string>
     <string name="create_schedule_title">Citas</string>
     <string name="create_schedule_subtitle">Agendar nueva cita</string>
+    <string name="list_schedule_subtitle">Próximas citas</string>
     <string name="login_name">Inicio de sesión</string>
     <string name="email">Correo Electrónico</string>
     <string name="password">Contraseña</string>
@@ -38,6 +39,8 @@
     <string name="register_success">Registrado exitosamente</string>
     <string name="register_fail">No se pudo registrar!, intente mas tarde</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="complete_form">Complete el formulario!</string>
+    <string name="schedule_done">Nueva cita agendada!</string>
 
 
 </resources>
