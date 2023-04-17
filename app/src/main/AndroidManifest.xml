@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".CitesList"
+            android:name=".schedules.CitesList"
             android:exported="false" />
         <activity
             android:name=".BottomNavigationActivity"

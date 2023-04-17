@@ -9,10 +9,22 @@
     <string name="ya_posees_una_cuenta">¿Ya posees una cuenta?</string>
     <string name="ingresar">Ingresar</string>
     <string name="correo_electr_nico">Correo Electrónico</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- MY VARIABLES -->
     <string name="hello_blank_fragment">Hola fragmento vacio</string>
     <string name="home_option">Inicio</string>
     <string name="cite_create">Agendar cita</string>
+    <string name="input_date">Seleccione una fecha</string>
+    <string name="input_start_time">Indique la hora de inicio</string>
+    <string name="input_end_time">Indique la hora de finalización</string>
+    <string name="label_date">Cita el día:</string>
+    <string name="label_start_time">Hora de inicio:</string>
+    <string name="label_end_time">Hora de finalización:</string>
+    <string name="slc_doctor">Seleccione un doctor:</string>
+    <string name="error_input_date">Seleccione una fecha posterior a hoy:</string>
+    <string name="error_end_time">Seleccione una hora de finalización posterior a hoy:</string>
+    <string name="btn_end_schedule">Finalizar</string>
+    <string name="create_schedule_title">Citas</string>
+    <string name="create_schedule_subtitle">Agendar nueva cita</string>
     <string name="login_name">Inicio de sesión</string>
     <string name="email">Correo Electrónico</string>
     <string name="password">Contraseña</string>

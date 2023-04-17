@@ -11,6 +11,7 @@
     <color name="white_soft">#FBFAF5</color>
     <color name="black_soft">#414a4c</color>
     <color name="grey_soft">#cccccc</color>
+    <color name="grey">#aaa</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
     <color name="light_blue_A200">#FF40C4FF</color>
