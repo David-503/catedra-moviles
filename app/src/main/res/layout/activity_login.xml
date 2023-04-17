@@ -63,6 +63,25 @@
             android:layout_height="wrap_content"
             android:text="@string/login_button" />
 
+        <Button
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@color/grey_soft"
+            android:contextClickable="false"
+            android:drawableLeft="@mipmap/google_logo"
+            android:paddingLeft="20dp"
+
+            android:text="Google"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textDirection="locale"
+            android:textIsSelectable="false"
+            app:backgroundTint="#F8F8F7"
+            app:iconTint="@color/black" />
+
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
