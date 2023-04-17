@@ -11,9 +11,14 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-
+enum class originType {
+    BASIC,
+    GOOGLE
+}
 class TopMenuFragment : Fragment() {
-    private var active: Int? = null
+    private var origin: originType? = null
+    private var email: String? = null
+
     lateinit var logoutButton: Button;
     // Declaracion de variables
     private lateinit var bottomNavigationBar: BottomNavigationView
@@ -21,7 +26,8 @@ class TopMenuFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            active = it.getInt(ACTIVE)
+//            origin = originType.valueOf(it.getString(ORIGIN)?:"")
+//            email = it.getString(EMAIL)
         }
     }
     override fun onCreateView(
@@ -50,11 +56,15 @@ class TopMenuFragment : Fragment() {
 
     }
     companion object {
-        private val ACTIVE = "active"
-        fun newInstance(active: Int) =
+        private val ORIGIN = "origin"
+        private val EMAIL = "email"
+
+        fun newInstance(email:String,origin: String) =
             TopMenuFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ACTIVE, active)
+                    putString(ORIGIN, origin)
+                    putString(EMAIL, email)
+
                 }
             }
     }

@@ -7,10 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import com.example.tallerpracticoi_dsm.BottomMenu
-import com.example.tallerpracticoi_dsm.LoginActivity
-import com.example.tallerpracticoi_dsm.R
-import com.example.tallerpracticoi_dsm.TopMenuFragment
+import com.example.tallerpracticoi_dsm.*
 import com.google.firebase.auth.FirebaseAuth
 
 open class AppLayout: AppCompatActivity() {
@@ -22,10 +19,15 @@ open class AppLayout: AppCompatActivity() {
         // Insert fragment menu
         val data = intent.extras
         val itemMenuSelected = data?.getInt("itemMenuSelected")
+        val emailUser = data?.getString("email")
+        val originType = data?.getString("provider")
+
         val transaction = supportFragmentManager.beginTransaction()
         val menu = BottomMenu()
         val topMenu = TopMenuFragment()
         if(itemMenuSelected !== null) menu.arguments = bundleOf("active" to itemMenuSelected)
+        if(emailUser !== null) topMenu.arguments = bundleOf("email" to emailUser,"origin" to originType)
+
         transaction.replace(R.id.frameTopMenu, topMenu)
         transaction.replace(R.id.frameBottomMenu, menu)
         transaction.commit()

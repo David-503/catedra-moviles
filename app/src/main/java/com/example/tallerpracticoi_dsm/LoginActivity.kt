@@ -70,9 +70,8 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                     progressBar?.visibility = View.GONE
-                    val i = Intent(this@LoginActivity, CitesList::class.java)
-                    i.putExtra("itemMenuSelected", R.id.cites)
-                    startActivity(i)
+                    showHome(email,originType.BASIC)
+
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -104,12 +103,18 @@ class LoginActivity : AppCompatActivity() {
                 // Cambiando la vista
 //                val intent = Intent(this@LoginActivity, BottomNavigationActivity::class.java)
 //                startActivity(intent)
-                val i = Intent(this@LoginActivity, CitesList::class.java)
-                i.putExtra("itemMenuSelected", R.id.cites)
-                startActivity(i)
+                showHome(auth.currentUser?.email,originType.BASIC)
                 finish()
 
             }
         }
+    }
+
+    private fun showHome(email:String?,provider:originType){
+        val i = Intent(this@LoginActivity, CitesList::class.java)
+        i.putExtra("itemMenuSelected", R.id.cites)
+        i.putExtra("email", email)
+        i.putExtra("provider", provider)
+        startActivity(i)
     }
 }

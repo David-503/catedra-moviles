@@ -57,8 +57,8 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                     progressBar!!.visibility = View.GONE
-                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                    startActivity(intent)
+                    showHome(email,originType.BASIC)
+
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -100,12 +100,19 @@ class RegisterActivity : AppCompatActivity() {
         authStateListener = FirebaseAuth.AuthStateListener { auth ->
             if (auth.currentUser != null) {
                 // Cambiando la vista
-                val i = Intent(this@RegisterActivity, CitesList::class.java)
-                i.putExtra("itemMenuSelected", R.id.cites)
-                startActivity(i)
+                showHome(auth.currentUser?.email,originType.BASIC)
+
                 finish()
 
             }
         }
+    }
+
+    private fun showHome(email:String?,provider:originType){
+        val i = Intent(this@RegisterActivity, CitesList::class.java)
+        i.putExtra("itemMenuSelected", R.id.cites)
+        i.putExtra("email", email)
+        i.putExtra("provider", provider)
+        startActivity(i)
     }
 }
