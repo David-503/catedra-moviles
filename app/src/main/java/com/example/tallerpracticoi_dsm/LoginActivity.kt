@@ -12,10 +12,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.example.tallerpracticoi_dsm.schedules.CitesList
 
 class LoginActivity : AppCompatActivity() {
     private var emailTV: EditText? = null
@@ -70,8 +70,9 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                     progressBar?.visibility = View.GONE
-                    val intent = Intent(this@LoginActivity, BottomNavigationActivity::class.java)
-                    startActivity(intent)
+                    val i = Intent(this@LoginActivity, CitesList::class.java)
+                    i.putExtra("itemMenuSelected", R.id.cites)
+                    startActivity(i)
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -101,8 +102,11 @@ class LoginActivity : AppCompatActivity() {
         authStateListener = FirebaseAuth.AuthStateListener { auth ->
             if (auth.currentUser != null) {
                 // Cambiando la vista
-                val intent = Intent(this@LoginActivity, BottomNavigationActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(this@LoginActivity, BottomNavigationActivity::class.java)
+//                startActivity(intent)
+                val i = Intent(this@LoginActivity, CitesList::class.java)
+                i.putExtra("itemMenuSelected", R.id.cites)
+                startActivity(i)
                 finish()
 
             }

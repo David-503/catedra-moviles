@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.example.tallerpracticoi_dsm.schedules.CitesList
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
@@ -99,8 +100,9 @@ class RegisterActivity : AppCompatActivity() {
         authStateListener = FirebaseAuth.AuthStateListener { auth ->
             if (auth.currentUser != null) {
                 // Cambiando la vista
-                val intent = Intent(this@RegisterActivity, BottomNavigationActivity::class.java)
-                startActivity(intent)
+                val i = Intent(this@RegisterActivity, CitesList::class.java)
+                i.putExtra("itemMenuSelected", R.id.cites)
+                startActivity(i)
                 finish()
 
             }
