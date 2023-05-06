@@ -16,17 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".gitHubLogin"
+            android:exported="false" />
+        <activity
             android:name=".schedules.CreateAppointment"
             android:exported="false" />
         <activity
             android:name=".schedules.CitesList"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".BottomNavigationActivity"
             android:exported="true">
@@ -40,7 +37,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />

@@ -20,14 +20,14 @@ class CitesList : AppLayout() {
 
     private val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     private val schedules = mutableListOf<ScheduleDTO>(
-        ScheduleDTO("Bryan Walberto Garay Alvarado", formatter.parse("01/05/2023 00:00"), formatter.parse("01/05/2023 08:00"), formatter.parse("01/05/2023 08:15")),
+        //ScheduleDTO("Bryan Walberto Garay Alvarado", formatter.parse("01/05/2023 00:00"), formatter.parse("01/05/2023 08:00"), formatter.parse("01/05/2023 08:15")),
         //ScheduleDTO('Bryan Walberto Garay Alvarado', formatter.parse("01/05/2023 00:00"), formatter.parse("01/05/2023 08:00"), formatter.parse("01/05/2023 08:15"))
     )
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val data = intent.extras
         if(data?.getString("doctor") != null && data?.getString("doctor")!!.isNotEmpty()) {
-            schedules.add(1,
+            schedules.add(0,
                 ScheduleDTO(
                     data?.getString("doctor"),
                     formatter.parse(data?.getString("date")),

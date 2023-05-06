@@ -49,13 +49,15 @@ class CreateAppointment : AppLayout() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         val datePickerDialog = DatePickerDialog(this, {
-                _, year, month, dayOfMonth ->
+                _, year, month , dayOfMonth ->
+
             if(year < calendar.get(Calendar.YEAR) || month < calendar.get(Calendar.MONTH) || dayOfMonth < calendar.get(
                     Calendar.DAY_OF_MONTH)) {
                 editText.error = getString(R.string.error_input_date)
                 return@DatePickerDialog
             }
-            editText.setText("$dayOfMonth/$month/$year")
+            val actualMonth = month +1;
+            editText.setText("$dayOfMonth/$actualMonth/$year")
             if(label.visibility === View.GONE) label.visibility = View.VISIBLE
         }, year, month, day)
         datePickerDialog.show()

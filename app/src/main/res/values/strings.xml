@@ -41,6 +41,16 @@
     <string name="logout">Cerrar sesión</string>
     <string name="complete_form">Complete el formulario!</string>
     <string name="schedule_done">Nueva cita agendada!</string>
+    <string name="email_warning">Por favor ingrese un correo electronico</string>
+    <string name="password_warning">Por favor ingrese una contraseña </string>
+    <string name="login_success">Autenticado exitosamente</string>
+    <string name="login_failed">Acceso fallido! Intentelo mas tarde</string>
+    <string name="google_login_failed">Google login fallido! Intentelo mas tarde</string>
+    <string name="preps_file">com.keepeer.firebase.PREFERENCE_FILE_KEY</string>
+
+    <string name="facebook_app_id">560551386216319</string>
+    <string name="fb_login_protocol_scheme">fb560551386216319</string>
+    <string name="facebook_client_token">3959de2bc8c65738cd5c505c426f0eed</string>
 
 
 </resources>

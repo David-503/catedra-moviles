@@ -1,5 +1,6 @@
 package com.example.tallerpracticoi_dsm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,32 +9,42 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 enum class originType {
     BASIC,
-    GOOGLE
+    GOOGLE,
+    GITHUB
 }
 class TopMenuFragment : Fragment() {
     private var origin: originType? = null
     private var email: String? = null
-
     lateinit var logoutButton: Button;
+    lateinit var txtEmail: TextView;
+    lateinit var profilePic : ImageView;
     // Declaracion de variables
     private lateinit var bottomNavigationBar: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
-//            origin = originType.valueOf(it.getString(ORIGIN)?:"")
-//            email = it.getString(EMAIL)
+            email = it.getString(EMAIL)
+            origin = enumValueOf<originType>(it.getString(ORIGIN).toString())
+            Toast.makeText(context,"Origin Type " + origin,Toast.LENGTH_SHORT).show()
+
         }
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_top_menu, container, false)
     }
@@ -42,14 +53,26 @@ class TopMenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         logoutButton =requireView().findViewById(R.id.btn_logout)
         logoutButton!!.setOnClickListener { logOut() }
-
+          txtEmail = requireView().findViewById(R.id.txtEmail);
+         txtEmail.text=email;
+        profilePic = requireView().findViewById(R.id.imageProfile);
+        when (origin) {
+            originType.BASIC -> profilePic.setImageResource(R.drawable.email32_ligth)
+            originType.GITHUB -> profilePic.setImageResource(R.drawable.github32_ligth)
+            originType.GOOGLE -> profilePic.setImageResource(com.google.firebase.database.ktx.R.drawable.common_google_signin_btn_icon_light)
+            else -> { // Note the block
+                profilePic.setImageResource(R.drawable.user32)
+            }
+        }
 
     }
      fun logOut(){
-
         FirebaseAuth.getInstance().signOut().also {
             Toast.makeText(context,"Logout",Toast.LENGTH_SHORT).show()
             val intent = Intent(context, LoginActivity::class.java)
+            val preps = context?.getSharedPreferences(getString(R.string.preps_file), Context.MODE_PRIVATE)?.edit()
+            preps?.clear()
+            preps?.apply()
             startActivity(intent)
         }
 

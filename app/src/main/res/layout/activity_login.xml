@@ -72,21 +72,45 @@
             android:contextClickable="false"
             android:drawableLeft="@mipmap/google_logo"
             android:paddingLeft="20dp"
-
+            android:layout_marginTop="15dp"
             android:text="Google"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textDirection="locale"
             android:textIsSelectable="false"
             app:backgroundTint="#F8F8F7"
-            app:iconTint="@color/black" />
+            app:iconTint="@color/black"
+            android:layout_gravity="center_horizontal"
 
+            tools:ignore="RtlCompat" />
+
+
+        <Button
+            android:id="@+id/btnGitHub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@color/light_blue_900"
+            android:contextClickable="false"
+            android:drawableLeft="@mipmap/github32"
+            android:paddingLeft="20dp"
+            android:text="GitHub"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:textDirection="locale"
+            android:textIsSelectable="false"
+            app:backgroundTint="@color/black"
+            app:iconTint="@color/black"
+
+            tools:ignore="RtlCompat" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone" />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

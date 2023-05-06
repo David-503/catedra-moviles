@@ -41,4 +41,15 @@
     <string name="complete_form">Fill out the form!</string>
     <string name="schedule_done">New appointment scheduled!</string>
     <string name="list_schedule_subtitle">Próximas citas</string>
+    <string name="email_warning">Please enter email...</string>
+    <string name="password_warning">Please enter password...</string>
+    <string name="login_success">Login successful!</string>
+    <string name="login_failed">Login failed! Please try again later</string>
+    <string name="google_login_failed">Google login failed! Please try again later</string>
+    <string name="preps_file">com.keepeer.firebase.PREFERENCE_FILE_KEY</string>
+
+    <string name="facebook_app_id">560551386216319</string>
+    <string name="fb_login_protocol_scheme">fb560551386216319</string>
+    <string name="facebook_client_token">3959de2bc8c65738cd5c505c426f0eed</string>
+
 </resources>

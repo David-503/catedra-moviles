@@ -26,6 +26,7 @@ open class AppLayout: AppCompatActivity() {
         val menu = BottomMenu()
         val topMenu = TopMenuFragment()
         if(itemMenuSelected !== null) menu.arguments = bundleOf("active" to itemMenuSelected)
+
         if(emailUser !== null) topMenu.arguments = bundleOf("email" to emailUser,"origin" to originType)
 
         transaction.replace(R.id.frameTopMenu, topMenu)
