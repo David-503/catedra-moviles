@@ -1,5 +1,6 @@
 package com.example.tallerpracticoi_dsm
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
@@ -57,6 +58,21 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                     progressBar!!.visibility = View.GONE
+                    Toast.makeText(
+                        applicationContext,
+                        email,
+                        Toast.LENGTH_LONG
+                    ).show()
+                    Toast.makeText(
+                        applicationContext,
+                        originType.BASIC.toString(),
+                        Toast.LENGTH_LONG
+                    ).show()
+                    val preps = getSharedPreferences(getString(R.string.preps_file), Context.MODE_PRIVATE).edit()
+                    preps.putString("email",email)
+                    preps.putString("provider",originType.BASIC.toString())
+                    preps.apply()
+
                     showHome(email,originType.BASIC)
 
                 } else {
@@ -112,7 +128,7 @@ class RegisterActivity : AppCompatActivity() {
         val i = Intent(this@RegisterActivity, CitesList::class.java)
         i.putExtra("itemMenuSelected", R.id.cites)
         i.putExtra("email", email)
-        i.putExtra("provider", provider)
+        i.putExtra("provider", provider.toString())
         startActivity(i)
     }
 }
