@@ -8,11 +8,34 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.example.tallerpracticoi_dsm.*
+import com.example.tallerpracticoi_dsm.interfaces.DoctorsApi
 import com.google.firebase.auth.FirebaseAuth
+import okhttp3.Credentials
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 open class AppLayout: AppCompatActivity() {
 
 
+    fun <T> getApi(clazz: Class<T>): T {
+        val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", Credentials.basic("prueba", "prueba"))
+                    .build()
+                chain.proceed(request)
+            }
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8000/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+        // Crea una instancia del servicio que utiliza la autenticacion HTTP basica
+        return retrofit.create(clazz)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)

@@ -3,15 +3,30 @@ package com.example.tallerpracticoi_dsm.schedules
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import com.example.tallerpracticoi_dsm.R
 import com.example.tallerpracticoi_dsm.databinding.ActivityCitesListBinding
 import com.example.tallerpracticoi_dsm.databinding.ActivityCreateAppointmentBinding
+import com.example.tallerpracticoi_dsm.dto.DoctorDTO
+import com.example.tallerpracticoi_dsm.dto.ScheduleDTO
+import com.example.tallerpracticoi_dsm.interfaces.SchedulePayload
+import com.example.tallerpracticoi_dsm.interfaces.SchedulesApi
 import com.example.tallerpracticoi_dsm.utils.AppLayout
+import okhttp3.Credentials
+import okhttp3.OkHttpClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CreateAppointment : AppLayout() {
@@ -20,23 +35,33 @@ class CreateAppointment : AppLayout() {
     private val formatter = SimpleDateFormat("dd/MM/yyyy")
     private val timeFormatter = SimpleDateFormat("HH:mm")
 
-    private val items = listOf("Bryan Walberto Garay Alvarado", "Michelle Alejandra Hernandez Ayala")
+    private lateinit var schedulesApi: SchedulesApi
+    private lateinit var doctors: List<DoctorDTO>
+    private var selectedDoctor: Int? = null
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCreateAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         super.onCreate(savedInstanceState)
+
+        val data = intent.extras
+        val items = data?.getParcelableArray("doctorsList", DoctorDTO::class.java)
+        if(items != null) doctors = items.toList()
+
+        this.schedulesApi = this.getApi(SchedulesApi::class.java)
 
         startListeners()
         startDropdown()
     }
 
     private fun startDropdown() {
-        val adapter = ArrayAdapter(this, R.layout.dropdown_item_adapter, items)
+        val adapter = ArrayAdapter(this, R.layout.dropdown_item_adapter, doctors.map{d -> "${d.name} ${d.lastname}"})
         binding.dpdDoctors.setAdapter(adapter)
         binding.dpdDoctors.onItemClickListener = AdapterView.OnItemClickListener {
                 adapterView, view, i, l ->
             val selectedItem = adapterView.getItemAtPosition(i)
+            selectedDoctor = i
             Toast.makeText(this, "Doctor $selectedItem", Toast.LENGTH_SHORT)
         }
     }
@@ -105,18 +130,48 @@ class CreateAppointment : AppLayout() {
 
         // End button
         binding.btnCreateSchedule.setOnClickListener {
+            //println("date: ${binding.inputDate.text}")
+            //println("starttime: ${binding.iptStartTime.text}")
+            //println("endtime: ${binding.iptEndTime.text}")
+            //println("doctor: ${doctors[selectedDoctor!!].dui}")
             if(!binding.inputDate.text.isNotEmpty() || !binding.iptStartTime.text.isNotEmpty() || !binding.iptEndTime.text.isNotEmpty() || !binding.dpdDoctors.text.isNotEmpty()) {
                 Toast.makeText(this, R.string.complete_form, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            Toast.makeText(this, R.string.schedule_done, Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, CitesList::class.java)
-            intent.putExtra("doctor", binding.dpdDoctors.text.toString())
-            intent.putExtra("date", binding.inputDate.text.toString() + " 00:00")
-            intent.putExtra("startTime", binding.inputDate.text.toString() + " " + binding.iptStartTime.text)
-            intent.putExtra("endTime", binding.inputDate.text.toString() + " " + binding.iptEndTime.text)
-            startActivity(intent)
+            val calendar = Calendar.getInstance()
+             calendar.time = formatter.parse(binding.inputDate.text.toString())
+            val newSchedule = SchedulePayload("${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH)}-${calendar.get(Calendar.DAY_OF_MONTH)}", doctors[selectedDoctor!!].dui,doctors[selectedDoctor!!].dui, binding.iptStartTime.text.toString(), binding.iptEndTime.text.toString())
+            val call = this.schedulesApi.newSchedule(newSchedule)
+            call.enqueue(object : Callback<ScheduleDTO> {
+                override fun onResponse(call: Call<ScheduleDTO>, response: Response<ScheduleDTO>) {
+                    println("***** response ******8")
+                    println(newSchedule)
+                    println("***** response ******8")
+                    if(response.isSuccessful) {
+                        Toast.makeText(this@CreateAppointment, R.string.success_create_schedule, Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@CreateAppointment, CitesList::class.java)
+                        intent.putExtra("itemMenuSelected", R.id.cites)
+                        startActivity(intent)
+                    }
+                    else {
+                        val error = response.errorBody()?.string()
+                        Log.e("API", "Error al obtener citas de este paciente: $error")
+                        Toast.makeText(this@CreateAppointment, "Error al obtener datos", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ScheduleDTO>, t: Throwable) {
+                    Toast.makeText(this@CreateAppointment, R.string.failed_create_schedule, Toast.LENGTH_SHORT).show()
+                }
+            })
+            //Toast.makeText(this, R.string.schedule_done, Toast.LENGTH_SHORT).show()
+            //val intent = Intent(this, CitesList::class.java)
+            //intent.putExtra("doctor", binding.dpdDoctors.text.toString())
+            //intent.putExtra("date", binding.inputDate.text.toString() + " 00:00")
+            //intent.putExtra("startTime", binding.inputDate.text.toString() + " " + binding.iptStartTime.text)
+            //intent.putExtra("endTime", binding.inputDate.text.toString() + " " + binding.iptEndTime.text)
+            //startActivity(intent)
             return@setOnClickListener
         }
         // Floating Button

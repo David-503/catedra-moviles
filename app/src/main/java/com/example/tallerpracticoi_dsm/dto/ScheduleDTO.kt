@@ -7,7 +7,7 @@ data class ScheduleDTO (
     val id_medical_appointment: Int,
     val code_medical_appointment: String,
     val patient: String,
-    val doctor: String,
+    val doctor: DoctorDTO,
     val status: Int,
     val appointment_date: String,
     val initial_date: String,

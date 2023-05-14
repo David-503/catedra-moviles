@@ -1,4 +1,8 @@
 <resources>
+    <!-- main -->
+    <string name="positive_message">Si</string>
+    <string name="negative_message">No</string>
+
     <string name="app_name">Proyecto Moviles</string>
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Cerrar</string>
@@ -47,6 +51,12 @@
     <string name="login_failed">Acceso fallido! Intentelo mas tarde</string>
     <string name="google_login_failed">Google login fallido! Intentelo mas tarde</string>
     <string name="preps_file">com.keepeer.firebase.PREFERENCE_FILE_KEY</string>
+
+    <!-- Schedules -->
+    <string name="success_create_schedule">Se ha agendado la cita con éxito!</string>
+    <string name="failed_create_schedule">No se ha podido agendar la cita</string>
+    <string name="delete_schedule">¿Está seguro de cancelar su cita?</string>
+    <string name="success_delete_schedule">¿Está seguro de cancelar su cita?</string>
 
     <string name="facebook_app_id">560551386216319</string>
     <string name="fb_login_protocol_scheme">fb560551386216319</string>
