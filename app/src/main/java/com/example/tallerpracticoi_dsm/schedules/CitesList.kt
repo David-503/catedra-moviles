@@ -68,9 +68,6 @@ class CitesList : AppLayout() {
             ) {
                 if(response.isSuccessful) {
                     schedulesList = response.body()!!
-                    println("***************************")
-                    println(schedulesList)
-                    println("************")
                     binding.scheduleList.adapter = ScheduleAdapter(this@CitesList, schedulesList)
                     binding.scheduleList.layoutManager = LinearLayoutManager(this@CitesList)
                 }

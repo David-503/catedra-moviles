@@ -165,13 +165,6 @@ class CreateAppointment : AppLayout() {
                     Toast.makeText(this@CreateAppointment, R.string.failed_create_schedule, Toast.LENGTH_SHORT).show()
                 }
             })
-            //Toast.makeText(this, R.string.schedule_done, Toast.LENGTH_SHORT).show()
-            //val intent = Intent(this, CitesList::class.java)
-            //intent.putExtra("doctor", binding.dpdDoctors.text.toString())
-            //intent.putExtra("date", binding.inputDate.text.toString() + " 00:00")
-            //intent.putExtra("startTime", binding.inputDate.text.toString() + " " + binding.iptStartTime.text)
-            //intent.putExtra("endTime", binding.inputDate.text.toString() + " " + binding.iptEndTime.text)
-            //startActivity(intent)
             return@setOnClickListener
         }
         // Floating Button
