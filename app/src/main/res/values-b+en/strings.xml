@@ -4,6 +4,7 @@
     <string name="negative_message">No</string>
     <string name="option_1_bottom_menu">Appointments</string>
     <string name="option_2_bottom_menu">Prescriptions</string>
+    <string name="option_3_bottom_menu">Medical Records</string>
 
     <string name="app_name">Taller Practico I - DSM</string>
     <string name="navigation_drawer_open">Open</string>

@@ -6,6 +6,6 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface PatientsApi {
-    @GET("patient/list")
+    @GET("patients.php")
     fun getPatients(): Call<List<PatientDTO>>
 }

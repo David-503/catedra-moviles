@@ -4,6 +4,7 @@
     <string name="negative_message">No</string>
     <string name="option_1_bottom_menu">Citas</string>
     <string name="option_2_bottom_menu">Prescripciones</string>
+    <string name="option_3_bottom_menu">Expedientes</string>
 
     <string name="app_name">Proyecto Moviles</string>
     <string name="navigation_drawer_open">Abrir</string>

@@ -47,6 +47,9 @@ class CitesList : AppLayout() {
                     val doctors = response.body()
                     if(doctors != null) {
                         doctorsList = doctors
+                        println("*************")
+                        println(doctorsList)
+                        println("*************")
                     }
                     else {
                         val error = response.errorBody()?.string()

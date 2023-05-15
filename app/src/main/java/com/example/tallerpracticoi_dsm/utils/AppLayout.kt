@@ -22,6 +22,24 @@ open class AppLayout: AppCompatActivity() {
     fun getLocalVar(key: String): String? {
         return getSharedPreferences(getString(R.string.preps_file), Context.MODE_PRIVATE).getString(key, "")
     }
+    fun <T> getApi2(clazz: Class<T>): T {
+        val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", Credentials.basic("prueba", "prueba"))
+                    .build()
+                chain.proceed(request)
+            }
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+        // Crea una instancia del servicio que utiliza la autenticacion HTTP basica
+        return retrofit.create(clazz)
+    }
     fun <T> getApi(clazz: Class<T>): T {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->

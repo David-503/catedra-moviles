@@ -25,7 +25,7 @@ class MedicalRecord : AppLayout() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val patientsApi = this.getApi(PatientsApi::class.java)
+        val patientsApi = this.getApi2(PatientsApi::class.java)
         binding = ActivityMedicalRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
         super.onCreate(savedInstanceState)

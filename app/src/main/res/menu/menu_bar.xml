@@ -19,6 +19,6 @@
     <item
         android:id="@+id/medicalrecord"
         android:icon="@drawable/baseline_calculate_24"
-        android:title="Medical Record" />
+        android:title="@string/option_3_bottom_menu" />
 
 </menu>
