@@ -1,26 +1,20 @@
 package com.example.tallerpracticoi_dsm.schedules
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.Transformations
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tallerpracticoi_dsm.dto.ScheduleDTO
 import com.example.tallerpracticoi_dsm.R
@@ -32,12 +26,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.math.abs
-import kotlin.math.ceil
 import kotlin.math.floor
 
 class ScheduleAdapter(private val context: Context, var appointments: List<ScheduleDTO>): RecyclerView.Adapter<ScheduleAdapter.Holder>() {
@@ -102,16 +93,17 @@ class ScheduleAdapter(private val context: Context, var appointments: List<Sched
         cal.time = formatterTime.parse(appointment.initial_date) as Date
         holder.lblStartTime.text = cal.get(Calendar.HOUR_OF_DAY).toString().padStart(2,'0') + ":" + cal.get(Calendar.MINUTE).toString().padStart(2, '0') + " " + (if(cal.get(Calendar.AM_PM) === 0) "AM" else "PM")
         holder.lblDoctor.text = appointment.doctor.name
+        holder.imgDelete.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.baseline_delete_outline_24))
+        cal.time = formatterDate.parse(appointment.appointment_date) as Date
+
         holder.imgChecked.setImageDrawable(
             if(appointment.status == 1)
-                AppCompatResources.getDrawable(context, R.drawable.baseline_access_time_24)
+                AppCompatResources.getDrawable(context, if(cal.time.before(Date())) R.drawable.baseline_check_circle_outline_24 else R.drawable.baseline_access_time_24)
             else
                 AppCompatResources.getDrawable(context, R.drawable.baseline_cancel_24)
         )
-        holder.imgDelete.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.baseline_delete_outline_24))
-        cal.time = formatterDate.parse(appointment.appointment_date) as Date
-        holder.lblDate.text =  "${cal.get(Calendar.DAY_OF_MONTH).toString().padStart(2, '0') }/${cal.get(Calendar.MONTH).toString().padStart(2, '0')}/${cal.get(Calendar.YEAR)}"
-        if(appointment.status == 1)
+        holder.lblDate.text =  "${cal.get(Calendar.DAY_OF_MONTH).toString().padStart(2, '0') }/${(cal.get(Calendar.MONTH)+1).toString().padStart(2, '0')}/${cal.get(Calendar.YEAR)}"
+        if(appointment.status == 1 && cal.time.after(Date()))
             holder.mainContainer.setOnTouchListener(
             object: View.OnTouchListener {
                 override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -146,9 +138,6 @@ class ScheduleAdapter(private val context: Context, var appointments: List<Sched
                                             call: Call<ScheduleDTO>,
                                             response: Response<ScheduleDTO>
                                         ) {
-                                            println("*****************")
-                                            println(response.body())
-                                            println("*****************")
                                             if(response.isSuccessful) {
                                                 Toast.makeText(context, R.string.success_delete_schedule, Toast.LENGTH_SHORT).show()
                                                 val intent = Intent(context, CitesList::class.java)

@@ -2,6 +2,8 @@
     <!-- main -->
     <string name="positive_message">Yes</string>
     <string name="negative_message">No</string>
+    <string name="option_1_bottom_menu">Appointments</string>
+    <string name="option_2_bottom_menu">Prescriptions</string>
 
     <string name="app_name">Taller Practico I - DSM</string>
     <string name="navigation_drawer_open">Open</string>
@@ -57,6 +59,16 @@
     <string name="failed_create_schedule">Could not schedule this appointment, Try again later!</string>
     <string name="delete_schedule">Are you sure want to cancel this appointment?</string>
     <string name="success_delete_schedule">Appointment was successfully cancelled</string>
+
+    <!-- Prescriptions -->
+    <string name="title_prescriptions">Prescriptions</string>
+    <string name="subtitle_prescriptions">All my prescriptions</string>
+    <string name="param_prescription">Left days:</string>
+    <string name="active_prescription">Start now</string>
+    <string name="not_started_prescription">Prescription not started still!</string>
+    <string name="success_started_prescription">Prescription started successfully!</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 
     <string name="facebook_app_id">560551386216319</string>
     <string name="fb_login_protocol_scheme">fb560551386216319</string>

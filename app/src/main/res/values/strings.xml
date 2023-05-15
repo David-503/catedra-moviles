@@ -2,6 +2,8 @@
     <!-- main -->
     <string name="positive_message">Si</string>
     <string name="negative_message">No</string>
+    <string name="option_1_bottom_menu">Citas</string>
+    <string name="option_2_bottom_menu">Prescripciones</string>
 
     <string name="app_name">Proyecto Moviles</string>
     <string name="navigation_drawer_open">Abrir</string>
@@ -57,6 +59,16 @@
     <string name="failed_create_schedule">No se ha podido agendar la cita</string>
     <string name="delete_schedule">¿Está seguro de cancelar su cita?</string>
     <string name="success_delete_schedule">¿Está seguro de cancelar su cita?</string>
+
+    <!-- Prescriptions -->
+    <string name="title_prescriptions">Prescripciones</string>
+    <string name="from">Desde</string>
+    <string name="to">Hasta</string>
+    <string name="subtitle_prescriptions">Todas mis prescripciones</string>
+    <string name="param_prescription">Días restantes:</string>
+    <string name="active_prescription">Empezar hoy</string>
+    <string name="not_started_prescription">No ha iniciado el tratamiento aún!</string>
+    <string name="success_started_prescription">Se ha iniciado el tratamiento correctamente</string>
 
     <string name="facebook_app_id">560551386216319</string>
     <string name="fb_login_protocol_scheme">fb560551386216319</string>

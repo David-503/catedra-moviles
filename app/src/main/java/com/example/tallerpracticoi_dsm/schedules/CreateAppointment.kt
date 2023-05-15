@@ -156,8 +156,8 @@ class CreateAppointment : AppLayout() {
                     }
                     else {
                         val error = response.errorBody()?.string()
-                        Log.e("API", "Error al obtener citas de este paciente: $error")
-                        Toast.makeText(this@CreateAppointment, "Error al obtener datos", Toast.LENGTH_SHORT).show()
+                        Log.e("API", "Error al crear cita de este paciente: $error")
+                        Toast.makeText(this@CreateAppointment, error, Toast.LENGTH_SHORT).show()
                     }
                 }
 

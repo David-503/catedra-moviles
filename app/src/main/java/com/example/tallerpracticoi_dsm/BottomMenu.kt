@@ -51,8 +51,11 @@ class BottomMenu : Fragment() {
                     true
                 }
 
-                R.id.setting -> {
-                    Toast.makeText(activity, "Setting", Toast.LENGTH_SHORT).show()
+                R.id.prescriptions -> {
+                    val i = Intent(requireContext(), PrescriptionsActivity::class.java)
+                    i.putExtra("itemMenuSelected", R.id.prescriptions)
+                    startActivity(i)
+                    activity?.overridePendingTransition(0,0)
                     true
                 }
 

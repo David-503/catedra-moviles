@@ -9,12 +9,12 @@
     <item
         android:id="@+id/cites"
         android:icon="@drawable/baseline_edit_calendar_24"
-        android:title="Citas" />
+        android:title="@string/option_1_bottom_menu" />
 
     <item
-        android:id="@+id/setting"
+        android:id="@+id/prescriptions"
         android:icon="@drawable/baseline_text_snippet_24"
-        android:title="Setting" />
+        android:title="@string/option_2_bottom_menu" />
 
     <item
         android:id="@+id/search"
