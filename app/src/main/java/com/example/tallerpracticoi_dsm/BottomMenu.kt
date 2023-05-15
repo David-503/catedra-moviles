@@ -59,8 +59,11 @@ class BottomMenu : Fragment() {
                     true
                 }
 
-                R.id.search -> {
-                    Toast.makeText(activity, "Search", Toast.LENGTH_SHORT).show()
+                R.id.medicalrecord -> {
+                    val i = Intent(requireContext(), MedicalRecord::class.java)
+                    i.putExtra("itemMenuSelected", R.id.medicalrecord)
+                    startActivity(i)
+                    activity?.overridePendingTransition(0,0)
                     true
                 }
                 else -> {

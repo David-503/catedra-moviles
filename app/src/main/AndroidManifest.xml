@@ -28,6 +28,9 @@
             android:name=".schedules.CreateAppointment"
             android:exported="false" />
         <activity
+            android:name=".MedicalRecord"
+            android:exported="false" />
+        <activity
             android:name=".schedules.CitesList"
             android:exported="true" />
         <activity

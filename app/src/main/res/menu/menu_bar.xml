@@ -17,8 +17,8 @@
         android:title="@string/option_2_bottom_menu" />
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/medicalrecord"
         android:icon="@drawable/baseline_calculate_24"
-        android:title="Search" />
+        android:title="Medical Record" />
 
 </menu>

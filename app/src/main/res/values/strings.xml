@@ -70,6 +70,11 @@
     <string name="not_started_prescription">No ha iniciado el tratamiento aún!</string>
     <string name="success_started_prescription">Se ha iniciado el tratamiento correctamente</string>
 
+    <!-- Medical Records -->
+    <string name="title_medical" translatable="false">Expedientes Medicos</string>
+    <string name="subtitle_medical" translatable="false">Todos los expedientes</string>
+
+
     <string name="facebook_app_id">560551386216319</string>
     <string name="fb_login_protocol_scheme">fb560551386216319</string>
     <string name="facebook_client_token">3959de2bc8c65738cd5c505c426f0eed</string>

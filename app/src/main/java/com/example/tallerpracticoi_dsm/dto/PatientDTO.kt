@@ -1,8 +1,6 @@
 package com.example.tallerpracticoi_dsm.dto
 
-import android.os.Parcelable
-
-data class DoctorDTO(
+data class PatientDTO (
     val dui: String,
     val name: String,
     val lastname: String,
@@ -13,6 +11,5 @@ data class DoctorDTO(
     val email_verified_at: String?,
     val created_at: String?,
     val updated_at: String?,
-    val id_type_user: Int,
-    //val phones: Array<String>,
+    val id_type_user: Int
 )

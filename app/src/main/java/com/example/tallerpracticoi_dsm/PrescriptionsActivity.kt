@@ -23,6 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PrescriptionsActivity : AppLayout() {
+
     private lateinit var binding: ActivityPrescriptionsBinding
     private lateinit var patientDui: String
     override fun onCreate(savedInstanceState: Bundle?) {
