@@ -24,14 +24,16 @@ import retrofit2.Response
 
 class PrescriptionsActivity : AppLayout() {
     private lateinit var binding: ActivityPrescriptionsBinding
+    private lateinit var patientDui: String
     override fun onCreate(savedInstanceState: Bundle?) {
+        patientDui = this.getLocalVar("dui") ?: ""
         val prescriptionsApi = this.getApi(PrescriptionsApi::class.java)
         binding = ActivityPrescriptionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         super.onCreate(savedInstanceState)
 
 
-        val call = prescriptionsApi.getPrescriptions()
+        val call = prescriptionsApi.getPrescriptions(patientDui)
 
         call.enqueue(object : Callback<List<PrescriptionDTO>> {
             override fun onResponse(

@@ -17,8 +17,8 @@ data class SchedulePayload(
     val FinalHour: String
 )
 interface SchedulesApi {
-    @GET("citas/list")
-    fun getSchedules(): Call<List<ScheduleDTO>>
+    @GET("citas/list/{patientDui}")
+    fun getSchedules(@Path("patientDui") patientDui: String): Call<List<ScheduleDTO>>
 
     @POST("citas/crear")
     fun newSchedule(@Body payload: SchedulePayload): Call<ScheduleDTO>

@@ -130,10 +130,6 @@ class CreateAppointment : AppLayout() {
 
         // End button
         binding.btnCreateSchedule.setOnClickListener {
-            //println("date: ${binding.inputDate.text}")
-            //println("starttime: ${binding.iptStartTime.text}")
-            //println("endtime: ${binding.iptEndTime.text}")
-            //println("doctor: ${doctors[selectedDoctor!!].dui}")
             if(!binding.inputDate.text.isNotEmpty() || !binding.iptStartTime.text.isNotEmpty() || !binding.iptEndTime.text.isNotEmpty() || !binding.dpdDoctors.text.isNotEmpty()) {
                 Toast.makeText(this, R.string.complete_form, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -141,13 +137,10 @@ class CreateAppointment : AppLayout() {
 
             val calendar = Calendar.getInstance()
              calendar.time = formatter.parse(binding.inputDate.text.toString())
-            val newSchedule = SchedulePayload("${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH)}-${calendar.get(Calendar.DAY_OF_MONTH)}", doctors[selectedDoctor!!].dui,doctors[selectedDoctor!!].dui, binding.iptStartTime.text.toString(), binding.iptEndTime.text.toString())
+            val newSchedule = SchedulePayload("${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH)}-${calendar.get(Calendar.DAY_OF_MONTH)}", this.getLocalVar("dui") ?: "", doctors[selectedDoctor!!].dui, binding.iptStartTime.text.toString(), binding.iptEndTime.text.toString())
             val call = this.schedulesApi.newSchedule(newSchedule)
             call.enqueue(object : Callback<ScheduleDTO> {
                 override fun onResponse(call: Call<ScheduleDTO>, response: Response<ScheduleDTO>) {
-                    println("***** response ******8")
-                    println(newSchedule)
-                    println("***** response ******8")
                     if(response.isSuccessful) {
                         Toast.makeText(this@CreateAppointment, R.string.success_create_schedule, Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@CreateAppointment, CitesList::class.java)

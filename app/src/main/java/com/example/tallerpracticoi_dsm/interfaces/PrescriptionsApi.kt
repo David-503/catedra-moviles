@@ -8,8 +8,8 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface PrescriptionsApi {
-    @GET("prescriptions/list")
-    fun getPrescriptions(): Call<List<PrescriptionDTO>>
+    @GET("prescriptions/list/{patientId}")
+    fun getPrescriptions(@Path("patientId") patientId: String): Call<List<PrescriptionDTO>>
 
     @POST("prescriptions/start/{id}")
     fun startPrescription(@Path("id") prescriptionId: Int): Call<PrescriptionDTO>

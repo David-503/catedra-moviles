@@ -20,13 +20,14 @@ import java.text.SimpleDateFormat
 class CitesList : AppLayout() {
     private lateinit var binding: ActivityCitesListBinding
     private lateinit var doctorsList: List<DoctorDTO>
+    private lateinit var patientDui: String
     private var schedulesList: List<ScheduleDTO> = listOf()
 
 
     private val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val data = intent.extras
+        patientDui = this.getLocalVar("dui") ?: ""
         val doctorsApi = this.getApi(DoctorsApi::class.java)
         val schedulesApi = this.getApi(SchedulesApi::class.java)
         binding = ActivityCitesListBinding.inflate(layoutInflater)
@@ -35,7 +36,7 @@ class CitesList : AppLayout() {
 
 
         val call = doctorsApi.getDoctors()
-        val schedulesCall = schedulesApi.getSchedules()
+        val schedulesCall = schedulesApi.getSchedules(patientDui)
 
         call.enqueue(object : Callback<List<DoctorDTO>> {
             override fun onResponse(

@@ -1,5 +1,6 @@
 package com.example.tallerpracticoi_dsm.utils
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -18,6 +19,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 open class AppLayout: AppCompatActivity() {
 
 
+    fun getLocalVar(key: String): String? {
+        return getSharedPreferences(getString(R.string.preps_file), Context.MODE_PRIVATE).getString(key, "")
+    }
     fun <T> getApi(clazz: Class<T>): T {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
