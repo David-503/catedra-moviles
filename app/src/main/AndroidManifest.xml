@@ -19,6 +19,9 @@
             android:name=".PrescriptionsActivity"
             android:exported="false" />
         <activity
+            android:name=".users.CreateUser"
+            android:exported="false" />
+        <activity
             android:name=".gitHubLogin"
             android:exported="false" />
         <activity

@@ -74,5 +74,27 @@
     <string name="fb_login_protocol_scheme">fb560551386216319</string>
     <string name="facebook_client_token">3959de2bc8c65738cd5c505c426f0eed</string>
 
-
+    <!-- Users -->
+    <string name="user_title">Crear Usuario</string>
+    <string name="user_description">Rellena la información para poder acceder al resto de la aplicación</string>
+    <string name="lbl_name">Nombre:</string>
+    <string name="lbl_lastname">Apellido:</string>
+    <string name="lbl_dui">DUI:</string>
+    <string name="lbl_phone">Teléfono:</string>
+    <string name="lbl_address">Dirección:</string>
+    <string name="lbl_birthdate">Fecha de nacimiento:</string>
+    <string name="hint_name">Ingrese su nombre</string>
+    <string name="hint_lastname">Ingrese su apellido</string>
+    <string name="hint_dui">Ingrese su DUI</string>
+    <string name="hint_phone">Ingrese su teléfono</string>
+    <string name="hint_address">Ingrese su dirección</string>
+    <string name="hint_birthdate">Ingrese su fecha de nacimiento</string>
+    <string name="user_action">Registrar</string>
+    <string name="error_input_birthdate">Seleccione una fecha anterior a hoy</string>
+    <string name="error_input_dui">El dui debe tener el formato ########-#</string>
+    <string name="error_input_phone">El teléfono debe tener el formato ########</string>
+    <string name="error_input_required">El campo es requerido y debe tener al menos 3 caracteres</string>
+    <string name="error_input_birthdate_required">Debe seleccionar una fecha</string>
+    <string name="success_create_user">Usuario creado con éxito!</string>
+    <string name="failed_create_user">No se ha podido crear el usuario</string>
 </resources>
