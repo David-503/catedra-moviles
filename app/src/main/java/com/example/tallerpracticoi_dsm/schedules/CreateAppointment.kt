@@ -137,7 +137,7 @@ class CreateAppointment : AppLayout() {
 
             val calendar = Calendar.getInstance()
              calendar.time = formatter.parse(binding.inputDate.text.toString())
-            val newSchedule = SchedulePayload("${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH)}-${calendar.get(Calendar.DAY_OF_MONTH)}", this.getLocalVar("dui") ?: "", doctors[selectedDoctor!!].dui, binding.iptStartTime.text.toString(), binding.iptEndTime.text.toString())
+            val newSchedule = SchedulePayload("${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH)+1}-${calendar.get(Calendar.DAY_OF_MONTH)}", this.getLocalVar("dui") ?: "", doctors[selectedDoctor!!].dui, binding.iptStartTime.text.toString(), binding.iptEndTime.text.toString())
             val call = this.schedulesApi.newSchedule(newSchedule)
             call.enqueue(object : Callback<ScheduleDTO> {
                 override fun onResponse(call: Call<ScheduleDTO>, response: Response<ScheduleDTO>) {

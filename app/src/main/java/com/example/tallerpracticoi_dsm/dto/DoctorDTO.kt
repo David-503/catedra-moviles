@@ -1,7 +1,10 @@
 package com.example.tallerpracticoi_dsm.dto
 
 import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+
+@Parcelize
 data class DoctorDTO(
     val dui: String,
     val name: String,
@@ -15,4 +18,4 @@ data class DoctorDTO(
     val updated_at: String?,
     val id_type_user: Int,
     //val phones: Array<String>,
-)
+) : Parcelable
