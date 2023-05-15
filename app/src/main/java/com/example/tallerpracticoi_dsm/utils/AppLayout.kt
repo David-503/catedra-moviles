@@ -53,7 +53,9 @@ open class AppLayout: AppCompatActivity() {
         if(emailUser !== null) topMenu.arguments = bundleOf("email" to emailUser,"origin" to originType)
 
         transaction.replace(R.id.frameTopMenu, topMenu)
-        transaction.replace(R.id.frameBottomMenu, menu)
+        if(itemMenuSelected !== 0) {
+            transaction.replace(R.id.frameBottomMenu, menu)
+        }
         transaction.commit()
 
     }

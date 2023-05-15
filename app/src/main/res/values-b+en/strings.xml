@@ -62,4 +62,27 @@
     <string name="fb_login_protocol_scheme">fb560551386216319</string>
     <string name="facebook_client_token">3959de2bc8c65738cd5c505c426f0eed</string>
 
+    <!-- Users -->
+    <string name="user_title">Create User</string>
+    <string name="user_description">Fill in the information to access the rest of the app</string>
+    <string name="lbl_name">Name:</string>
+    <string name="lbl_lastname">Lastname:</string>
+    <string name="lbl_dui">DUI:</string>
+    <string name="lbl_phone">Phone:</string>
+    <string name="lbl_address">Address:</string>
+    <string name="lbl_birthdate">Birthdate:</string>
+    <string name="hint_name">Enter your name</string>
+    <string name="hint_lastname">Enter your lastname</string>
+    <string name="hint_dui">Enter your DUI</string>
+    <string name="hint_phone">Enter your phone</string>
+    <string name="hint_address">Enter your address</string>
+    <string name="hint_birthdate">Enter your birthdate</string>
+    <string name="user_action">Register</string>
+    <string name="error_input_birthdate">Pick a date before this day</string>
+    <string name="error_input_dui">The dui must have the format ########-#</string>
+    <string name="error_input_phone">The phone must have the format ########</string>
+    <string name="error_input_required">The field is required and must have at least 3 characters</string>
+    <string name="error_input_birthdate_required">Must pick a date</string>
+    <string name="success_create_user">User create successfully!</string>
+    <string name="failed_create_user">Could not create the user, Try again later!</string>
 </resources>

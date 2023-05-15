@@ -6,13 +6,24 @@ import android.os.Bundle
 import android.content.Intent
 import android.telephony.TelephonyCallback.CallStateListener
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.example.tallerpracticoi_dsm.dto.UserDTO
+import com.example.tallerpracticoi_dsm.interfaces.UsersApi
 import com.example.tallerpracticoi_dsm.schedules.CitesList
+import com.example.tallerpracticoi_dsm.users.CreateUser
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
+import okhttp3.Credentials
+import okhttp3.OkHttpClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RegisterActivity : AppCompatActivity() {
     private var emailTV: EditText? = null
@@ -125,10 +136,57 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun showHome(email:String?,provider:originType){
-        val i = Intent(this@RegisterActivity, CitesList::class.java)
-        i.putExtra("itemMenuSelected", R.id.cites)
-        i.putExtra("email", email)
-        i.putExtra("provider", provider.toString())
-        startActivity(i)
+        val usersApi: UsersApi = this.getApi(UsersApi::class.java)
+        val userCall = usersApi.getUser(email!!)
+        userCall.enqueue(object : Callback<UserDTO> {
+            override fun onResponse(
+                call: Call<UserDTO>,
+                response: Response<UserDTO>
+            ) {
+                if(response.isSuccessful) {
+                    val userData = response.body()
+                    val i = Intent(this@RegisterActivity, CitesList::class.java)
+                    val preps = getSharedPreferences(getString(R.string.preps_file),Context.MODE_PRIVATE).edit()
+                    preps.putString("dui", userData?.dui)
+                    preps.apply()
+                    i.putExtra("itemMenuSelected", R.id.cites)
+                    i.putExtra("email", email)
+                    i.putExtra("provider", provider.toString())
+                    startActivity(i)
+                } else {
+                    val i = Intent(this@RegisterActivity, CreateUser::class.java)
+                    i.putExtra("email", email)
+                    i.putExtra("provider", provider.toString())
+                    startActivity(i)
+                }
+            }
+
+            override fun onFailure(call: Call<UserDTO>, t: Throwable) {
+                val i = Intent(this@RegisterActivity, CreateUser::class.java)
+                i.putExtra("email", email)
+                i.putExtra("provider", provider.toString())
+                startActivity(i)
+                Log.e("User Api", "error is ${t.message}")
+            }
+        })
+    }
+
+    fun <T> getApi(clazz: Class<T>): T {
+        val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", Credentials.basic("prueba", "prueba"))
+                    .build()
+                chain.proceed(request)
+            }
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8000/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+        // Crea una instancia del servicio que utiliza la autenticacion HTTP basica
+        return retrofit.create(clazz)
     }
 }
