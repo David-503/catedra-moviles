@@ -1,4 +1,4 @@
-# DSM - App para pacientes de clínicas prenatales
+# DSM - SWEET WAIT
 
 ## Integrantes
 
